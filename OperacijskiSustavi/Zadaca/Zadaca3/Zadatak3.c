@@ -78,19 +78,22 @@ void main(){
 	pthread_t thread_id;
 
 	REZ = (int*)malloc(sizeof(int)*brSt);
-        BROJ = (int*)malloc(sizeof(int)*brSt);
-        ULAZ = (int*)malloc(sizeof(int)*brSt);
+    BROJ = (int*)malloc(sizeof(int)*brSt);
+    ULAZ = (int*)malloc(sizeof(int)*brSt);
+	
 	for(int i = 0; i<brSt;i++){
 		REZ[i] = -1;
 		BROJ[i] = 0;
 		ULAZ[i] = 0;
 	}
+
 	while(!sve_zauzeto()){
-	for(int i = 0; i<brDr; i++){
-		int * pdr = (int * ) malloc (sizeof(int));
-		*pdr = i;
-		pthread_create(&thread_id, NULL, provjeri_stol, pdr);
+		for(int i = 0; i<brDr; i++){
+			int * pdr = (int * ) malloc (sizeof(int));
+			*pdr = i;
+			pthread_create(&thread_id, NULL, provjeri_stol, pdr);
 	};}
+
 	for(int i = 0; i<brDr; i++){
 		pthread_join(thread_id, NULL);
 	};
