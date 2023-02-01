@@ -51,16 +51,19 @@ void *provjeri_stol(void *pdr){
 	printf("Dretva %d: pokusavam rezervirati stol %d\n", dr + 1, rand_tbl + 1);
 	udji_u_kriticni_odsjecak(rand_tbl);
 	char stanje[brSt ];
-        for(int i = 0; i<brSt; i++){
-                stanje[i] = (REZ[i] == -1) ? '-' : REZ[i] + 1 + '0';
-        }
-        stanje[brSt] = '\0';
+
+    for(int i = 0; i<brSt; i++){
+        stanje[i] = (REZ[i] == -1) ? '-' : REZ[i] + 1 + '0';
+    }
+
+    stanje[brSt] = '\0';
+
 	if(REZ[rand_tbl] == -1){
 		REZ[rand_tbl] = dr;
 		for(int i = 0; i<brSt; i++){
-                        stanje[i] = (REZ[i] == -1) ? '-' : REZ[i] + 1 + '0';
-                }
-                stanje[brSt] = '\0';
+                stanje[i] = (REZ[i] == -1) ? '-' : REZ[i] + 1 + '0';
+            }
+        stanje[brSt] = '\0';
 		printf("Dretva %d: rezerviram stol %d, stanje: %s\n", dr + 1, rand_tbl + 1, stanje);
 	}
 	else{
@@ -80,7 +83,7 @@ void main(){
 	REZ = (int*)malloc(sizeof(int)*brSt);
     BROJ = (int*)malloc(sizeof(int)*brSt);
     ULAZ = (int*)malloc(sizeof(int)*brSt);
-	
+
 	for(int i = 0; i<brSt;i++){
 		REZ[i] = -1;
 		BROJ[i] = 0;
